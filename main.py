@@ -4,6 +4,7 @@ from x86_const import *
 import binascii
 from keystone import * 
 from capstone import *
+import argparse
 
 # print status flags
 def print_flags(mu):
@@ -66,6 +67,10 @@ def populate_registers(mu):
 	mu.reg_write(UC_X86_REG_EFLAGS, 0xFFFF)
 
 def emulate(sample):
+
+	# memory address where emulation starts
+	ADDRESS = 0x1000000
+
 	md = Cs(CS_ARCH_X86, CS_MODE_32)
 
 	mu = Uc(UC_ARCH_X86, UC_MODE_32)
@@ -106,18 +111,29 @@ def print_registers(mu):
 	r_eflags = mu.reg_read(UC_X86_REG_EFLAGS)
 	print(">>> EFlags = 0x%04x" %r_eflags)
 
-# memory address where emulation starts
-ADDRESS = 0x1000000
 
-CODE = b"mov ax, 3; mov cx, 3; cmp cx, ax"
-code_string = CODE.split(';')
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='A tool for learning assembly code.')
+    parser.add_argument('-c', action="store", dest='code_string', default='',
+                        help='Supply code to emulate')
+    return parser.parse_args()
 
-for cs in code_string:
+def main():
 
-	sample = binarize(cs)
+	arguments = parse_arguments()
+	#CODE = b"mov ax, 3; mov cx, 3; cmp cx, ax"
+	code = arguments.code_string
+	code_string = code.split(';')
 
-	mu = emulate(sample)
+	for cs in code_string:
 
-	print_registers(mu)
+		sample = binarize(cs)
 
-	print_flags(mu)
+		mu = emulate(sample)
+
+		print_registers(mu)
+
+		print_flags(mu)
+
+if __name__ == '__main__':
+    main()
