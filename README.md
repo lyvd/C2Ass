@@ -10,6 +10,7 @@ Let's run a python script called main.py with an option called -c following by a
 python main.py -c "mov eax, 1; cmp eax, 1"
 
 mov eax, 1 = [184, 1, 0, 0, 0] number of statements: 1)
+
 Emulation done. Below is the CPU context
 EAX = 0x0001
  EBX = 0x0000
@@ -29,6 +30,8 @@ EAX = 0x0001
  Direction Flag: 1
  Overflow Flag: 1
  Nested Task Flag: 1
+
+ 
  cmp eax, 1 = [131, 248, 1](number of statements: 1)
  Emulation done. Below is the CPU context
  EAX = 0x0000
