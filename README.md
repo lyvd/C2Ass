@@ -8,7 +8,7 @@ This tool uses Keystone engine to assemble an assembly code and Unicorn engine f
 Let's run a python script called main.py with an option called -c following by a instruction(s) you want to examine 
 
 
-Instruction: mov ax, 0083h = [102, 184, 131, 0] (number of statements: 1)
+Instruction: mov ax, 0083h; mov bl, 2; div bl
 >>> Before instruction at 0x1000000, instruction size = 4
 Registers
 - EAX = 0x00000000 (0)
@@ -46,6 +46,7 @@ Flags
 - Zero Flag: 0
 - Sign Flag: 0
 - Overflow Flag: 0
+
 Instruction:  mov bl, 2 = [179, 2] (number of statements: 1)
 >>> Before instruction at 0x1000000, instruction size = 2
 Registers
@@ -84,6 +85,7 @@ Flags
 - Zero Flag: 0
 - Sign Flag: 0
 - Overflow Flag: 0
+
 Instruction:  div bl = [246, 243] (number of statements: 1)
 >>> Before instruction at 0x1000000, instruction size = 2
 Registers
