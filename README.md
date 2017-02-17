@@ -68,6 +68,7 @@ Flags
 - Zero Flag: 0
 - Sign Flag: 0
 - Overflow Flag: 0
+
 >>> After executing the instrution
 - EAX = 0x00000083 (131)
 - EBX = 0x00000002 (2)
@@ -107,6 +108,7 @@ Flags
 - Zero Flag: 0
 - Sign Flag: 0
 - Overflow Flag: 0
+
 >>> After executing the instrution
 - EAX = 0x00000141 (321)
 - EBX = 0x00000002 (2)
